@@ -1,0 +1,26 @@
+﻿@model CreatePerson
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+    <form asp-action="Create" asp-controller="IPeople" method="post">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+
+        <label asp-for="City"></label>
+        <input asp-for="City" />
+        <span asp-validation-for="City"></span>
+
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber"></span>
+
+        <button type="reset">Reset</button>
+        <button>Create</button>
+    </form>

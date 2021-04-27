@@ -1,0 +1,72 @@
+﻿@model PeopleViewModel
+@{
+    ViewData["Title"] = "Person Index";
+}
+
+<h1>Index</h1>
+
+<h2>List of people</h2>
+@if (Model != null && Model.PersonL != null)
+{
+<table>
+    @if (Model.PersonL.Count != 0)
+    {
+        <tr>
+
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>City</th>
+            <th>PhoneNumber</th>
+
+        </tr>
+    }
+    else
+    {
+        <p>Funded and  created People</p>
+    }
+    @foreach (Person person in Model.PersonL)
+    {
+        <tr>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+            <td>@person.City</td>
+            <td>@person.PhoneNumber</td>
+
+            <td>
+                <a asp-action="Delete" asp-controller="IPeople" asp-route-id="@person.Id">Delete</a>
+                <a asp-action="Update" asp-controller="IPeople" asp-route-id="@person.Id">Edit</a>
+            </td>
+        </tr>
+    }
+</table>
+}
+    <h2>Search</h2>
+    <form asp-action="Index" asp-controller="IPeople" method="post">
+        <label asp-for="@Model.SearchFilter"></label>
+        <input type="text" asp-for="@Model.SearchFilter" />
+        <button>Search</button>
+</form>
+
+
+<h2>Create person</h2>
+<form asp-action="Create" asp-controller="IPeople" method="post">
+        <label asp-for="createPerson.FirstName"></label>
+        <input asp-for="createPerson.FirstName" />
+        <span asp-validation-for="createPerson.FirstName"></span>
+
+        <label asp-for="createPerson.LastName"></label>
+        <input asp-for="createPerson.LastName" />
+        <span asp-validation-for="createPerson.LastName"></span>
+
+        <label asp-for="createPerson.City"></label>
+        <input asp-for="createPerson.City" />
+        <span asp-validation-for="createPerson.City"></span>
+
+        <label asp-for="createPerson.PhoneNumber"></label>
+        <input  asp-for="createPerson.PhoneNumber" />
+        <span asp-validation-for="createPerson.PhoneNumber"></span>
+
+        <button type="reset">Reset</button>
+        <button>Create</button>
+</form>
+
