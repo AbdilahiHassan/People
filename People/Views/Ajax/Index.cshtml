@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>AjaxIndex</h1>
+<div class="row" id="allpeople">
+    <div class="col-12">
+        <button id="PeopleBtn">ShowPeople</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <label for="textinput">PersonId</label>
+        <input type="text"  id="textinput" />
+    </div>
+    <div class="col-4">
+        <button id="DetailsBtn" class="btn btn-info">Show-details</button>
+    </div>
+    <div class="col-4">
+        <button id="DeleteBtn" class="btn btn-danger">Delete-person</button>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-12">
+        <div id="ResultDiv"></div>
+    </div>
+</div>
+<script src="~/js/Person.js" asp-append-version="true"></script>
+@*<script src="~/js/Person.js.js" asp-append-version="true"></script>*@

@@ -8,43 +8,12 @@
 <h2>List of people</h2>
 @if (Model != null && Model.PersonL != null)
 {
-      @* <table>
-        @if (Model.PersonL.Count != 0)
-        {
-            <tr>
 
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>City</th>
-                <th>PhoneNumber</th>
-                <th>Action</th>
-              
 
-            </tr>
-        }
-        else
-        {
-            <p>Funded and  created People</p>
-        }
-        @foreach (Person person in Model.PersonL)
-        {
-            <tr>
-                <td>@person.FirstName</td>
-                <td>@person.LastName</td>
-                <td>@person.City</td>
-                <td>@person.PhoneNumber</td>
-                
 
-                <td>
-                    <a asp-action="Delete" asp-controller="IPeople" asp-route-id="@person.Id">Delete</a>
-                    <a asp-action="Update" asp-controller="IPeople" asp-route-id="@person.Id">Edit</a>
-                </td>
-            </tr>
-        }
-    </table>*@
 }
 
-<!--Table--> 
+<!--Table-->
 <div class="row">
     <div class="col-12">
         <!--Head-->
@@ -74,40 +43,42 @@
         <!--body-->
         @foreach (Person person in Model.PersonL)
         {
-            //  <partial name="_CakeTableRowParctialView" model="item" />
-    <div class="row">
-        <!--FirstName-->
-        <div class="col-3">
-            <p>@person.FirstName</p>
-
-        </div>
-        <!--LastName-->
-        <div class="col-3">
-            <p>@person.LastName</p>
-        </div>
-        <!--City-->
-        <div class="col-2">
-            <p>@person.City</p>
-        </div>
-        <!--PhoneNumber-->
-        <div class="col-2">
-            <p>@person.PhoneNumber</p>
-        </div>
-        <!--Action-->
-        <!--Just small change-->
-        <div class="col-2">
-
-            <a asp-action="Delete" asp-controller="IPeople" asp-route-id="@person.Id" class="btn btn-danger">Delete</a>
-            <a asp-action="Update" asp-controller="IPeople" asp-route-id="@person.Id" class="btn btn-info">Edit</a>
-
-        </div>
-    </div>
-
+            <partial name="_PersonRorPartialView" model="person" />
         }
-
     </div>
 </div>
+<!--<div class="row">-->
+<!--FirstName-->
+<!--<div class="col-3">
+   @*  <p>@person.FirstName</p>
 
+</div>-->
+    <!--LastName-->
+    <!--<div class="col-3">
+               <p>@person.LastName</p>
+            </div>-->
+            <!--City-->
+            <!--<div class="col-2">
+                <p>@person.City</p>
+            </div>-->
+            <!--PhoneNumber-->
+            <!--<div class="col-2">
+                <p>@person.PhoneNumber</p>
+            </div>-->
+            <!--Action-->
+            <!--Just small change-->
+            <!--<div class="col-2">
+
+                    <a asp-action="Delete" asp-controller="IPeople" asp-route-id="@person.Id" class="btn btn-danger">Delete</a>
+                    <a asp-action="Update" asp-controller="IPeople" asp-route-id="@person.Id" class="btn btn-info">Edit</a>
+
+                </div>
+            </div>-->*@
+
+
+
+
+<!--end-->
 <h2>Search</h2>
 <form asp-action="Index" asp-controller="IPeople" method="post">
     <label asp-for="@Model.SearchFilter"></label>

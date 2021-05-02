@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "DetailsPartialView";
+}
+
+<h1>DetailsPartialView</h1>
+
+@model Person
+
+@if (Model != null)
+{
+    <div class="row" id=@("person" + Model.Id)>
+
+        <div class="col-2"><p>@Model.FirstName</p></div>
+        <div class="col-3"><p>@Model.LastName</p> </div>
+        <div class="col-2"><p>@Model.City</p>     </div>
+        <div class="col-2"><p>@Model.PhoneNumber</p>  </div>
+
+        <div class="col-3">
+
+            <a asp-action="_PersonRorPartialView" onclick="AjaxPersonDetails(event @Model.Id)" class="btn btn-primary">Show-Details</a>
+            <a asp-action="_PersonRorPartialView" onclick="Closepersondeials(event, @Model.Id)" class="btn btn-primary">Close-Details</a>
+        </div>
+
+
+    </div>
+}
+else
+{
+    <p>Sorry we coun not found a person.</p>
+}

@@ -18,7 +18,13 @@ namespace People.Controllers
         public IActionResult Index()
         {
             return View(_peopleService.All());
+          
         }
+
+
+
+
+
         [HttpPost]
         public IActionResult Index(PeopleViewModel IndexViewModel)
         {

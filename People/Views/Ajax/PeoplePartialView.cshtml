@@ -1,0 +1,47 @@
+﻿@model List<Person>
+@{
+    ViewData["Title"] = "PeoplePartialView";
+}
+
+<h2>List of people</h2>
+@if (Model != null)
+{
+    <!--Table-->
+    <div class="row">
+        <div class="col-12">
+            <!--Head-->
+            <div class="row">
+                <!--FirstName-->
+                <div class="col-3">
+                    <h5>FirstName</h5>
+                </div>
+                <!--LastName-->
+                <div class="col-3">
+                    <h5>LastName</h5>
+                </div>
+                <!--City-->
+                <div class="col-2">
+                    <h5>City</h5>
+                </div>
+                <!--Head-->
+                <div class="col-2">
+                    <h5>PhoneNumber</h5>
+                </div>
+                <!--Head-->
+                <div class="col-2">
+                    <h5>Action</h5>
+                </div>
+
+            </div>
+            <!--body-->
+            @foreach (Person person in Model)
+            {
+                <partial name="_PersonRorPartialView" model="person" view-data="ViewData"/>
+            }
+        </div>
+    </div>
+
+
+
+}
+
