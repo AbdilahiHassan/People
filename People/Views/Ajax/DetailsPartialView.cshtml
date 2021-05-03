@@ -18,8 +18,10 @@
 
         <div class="col-3">
 
-            <a asp-action="_PersonRorPartialView" onclick="AjaxPersonDetails(event @Model.Id)" class="btn btn-primary">Show-Details</a>
-            <a asp-action="_PersonRorPartialView" onclick="Closepersondeials(event, @Model.Id)" class="btn btn-primary">Close-Details</a>
+            <a asp-action="_PersonRorPartialView" onclick="AjaxPersonDetails(event @Model.Id)" class="btn btn-primary">Show-personDetails</a>
+            <a asp-action="_PersonRorPartialView" onclick="Closepersondeials(event, @Model.Id)" class="btn btn-primary">Close-personDetails</a>
+            <a asp-action="_PersonRorPartialView" onclick="AjaxGetpeople(event @Model.Id)" class="btn btn-primary">Show-person</a>
+            <a asp-action="_PersonRorPartialView" onclick="axajPostperson(event, @Model.Id)" class="btn btn-primary">Sendperson info</a>
         </div>
 
 
