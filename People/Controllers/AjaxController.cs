@@ -27,15 +27,20 @@ namespace People.Controllers
         public IActionResult PeoplePartialView()
         {
          List <Person> personL = _peopleService.All().PersonL;
-         return PartialView("_PersonRorPartialView", personL);
+         return PartialView("_PeoplePartialView", personL);
 
            
         }
         [HttpPost]
         public IActionResult DetailsPartialView(int id)
         {
+            
             Person person = _peopleService.FindById(id);
-            return PartialView("_PersonRorPartialView", person);
+            if(person != null)
+            {
+                return NotFound();
+            }
+               return PartialView("_PersonRorPartialView", person);
 
         }
 

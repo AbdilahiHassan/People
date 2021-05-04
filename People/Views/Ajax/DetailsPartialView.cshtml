@@ -1,27 +1,35 @@
-﻿
+﻿@model Person
 @{
     ViewData["Title"] = "DetailsPartialView";
 }
 
 <h1>DetailsPartialView</h1>
 
-@model Person
+
 
 @if (Model != null)
 {
     <div class="row" id=@("person" + Model.Id)>
 
-        <div class="col-2"><p>@Model.FirstName</p></div>
-        <div class="col-3"><p>@Model.LastName</p> </div>
-        <div class="col-2"><p>@Model.City</p>     </div>
-        <div class="col-2"><p>@Model.PhoneNumber</p>  </div>
+        <div class="col-2">
+        <p>@Model.FirstName</p>
+        </div>
+        <div class="col-3">
+        <p>@Model.LastName</p>
+        </div>
+        <div class="col-2">
+        <p>@Model.City</p>     
+        </div>
+        <div class="col-2">
+        <p>@Model.PhoneNumber</p>  
+        </div>
 
         <div class="col-3">
-
-            <a asp-action="_PersonRorPartialView" onclick="AjaxPersonDetails(event @Model.Id)" class="btn btn-primary">Show-personDetails</a>
-            <a asp-action="_PersonRorPartialView" onclick="Closepersondeials(event, @Model.Id)" class="btn btn-primary">Close-personDetails</a>
-            <a asp-action="_PersonRorPartialView" onclick="AjaxGetpeople(event @Model.Id)" class="btn btn-primary">Show-person</a>
-            <a asp-action="_PersonRorPartialView" onclick="axajPostperson(event, @Model.Id)" class="btn btn-primary">Sendperson info</a>
+            
+            <a asp-action="DetailsPartialView" onclick="AjaxShowPersonDetails(event @Model.Id)" class="btn btn-primary">Show-personDetails</a>
+            <a asp-action="DetailsPartialView" onclick="Closepersondeials(event, @Model.Id)" class="btn btn-primary">Close-personDetails</a>
+            <a asp-action="PeoplePartialView" onclick="AjaxGetpeople(event @Model.Id)" class="btn btn-primary">Show-person</a>
+            <a asp-action="PeoplePartialView" onclick="axajPostperson(event, @Model.Id)" class="btn btn-primary">Sendperson info</a>
         </div>
 
 
