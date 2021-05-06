@@ -10,7 +10,7 @@ namespace People.Models.MetaData
    public interface IPeopleRepo
     {
 
-        public Person Create(CreatePerson createPerson);
+        public Person Create( CreatePerson   createPerson); //I'm not sure:CreatePerson
 
         public List<Person> Read();
 

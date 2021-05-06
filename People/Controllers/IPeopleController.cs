@@ -12,7 +12,11 @@ namespace People.Controllers
 
     public class IPeopleController : Controller
     {
-        IPeopelService _peopleService = new PeopleService();
+        IPeopelService _peopleService;
+        public IPeopleController(IPeopelService peopleservice) //constructur for Dependency injection
+        {
+            _peopleService = peopleservice;
+        }
 
         [HttpGet]
         public IActionResult Index()

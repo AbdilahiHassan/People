@@ -12,11 +12,12 @@ namespace People.Controllers
     public class AjaxController : Controller
     {
 
-        private IPeopelService _peopleService;
-        public AjaxController()
+         IPeopelService _peopleService;
+        public AjaxController(IPeopelService peopelService)
         {
-            _peopleService =  new PeopleService();
+            _peopleService = peopelService;
         }
+
 
         public IActionResult Index()
         {

@@ -11,8 +11,8 @@ namespace People.Models.MetaData
     {
      
         //static int idcounter = 0;
-     private   static List<Person> PersonList = new List<Person>();
-        private int IdCounter;
+     List<Person> PersonList = new List<Person>();
+         int IdCounter;
 
         public Person Create(CreatePerson createPerson)
         {

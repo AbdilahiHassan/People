@@ -1,9 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using People.DataBase;
+using People.Models.MetaData;
+using People.Models.Repo;
+using People.Models.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +18,24 @@ namespace People
 {
     public class Startup
     {
+        //Access to appsettings.json in my Startup class file (Constructor Injection).
+        public IConfiguration Configuration { get; }
+  
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //DbContext to ConfigureServices
+            services.AddDbContext<PeopleDbContext>(options =>
+         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //connect to the DatabseRepo
+            services.AddScoped<IPeopelService, PeopleService>();
+            // services.AddSingleton<IPeopleRepo, InMemoryPeopleRepo>();
+            services.AddScoped<IPeopleRepo, DataBasePeopleRepo>();
             //services.AddControllersWithViews();
             services.AddMvc();
         }

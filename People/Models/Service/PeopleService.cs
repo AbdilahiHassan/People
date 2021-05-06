@@ -12,9 +12,9 @@ namespace People.Models.Service
     public class PeopleService : IPeopelService
     {
         IPeopleRepo _personRepo; //Storage for person data
-        public PeopleService()
+        public PeopleService(IPeopleRepo peopleRepo)
         {
-            _personRepo = new InMemoryPeopleRepo();
+            _personRepo = peopleRepo;
 
         }
         IPeopleRepo peopleRepo = new InMemoryPeopleRepo();
