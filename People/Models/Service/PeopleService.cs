@@ -25,7 +25,9 @@ namespace People.Models.Service
             person.LastName = createPerson.LastName;
             person.City     =  createPerson.City;
             person.PhoneNumber = createPerson.PhoneNumber;
+            //person.ACityId = createPerson.CityId;
             person = _personRepo.Create(createPerson);
+            
             return person;
 
 

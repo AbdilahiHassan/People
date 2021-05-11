@@ -1,0 +1,33 @@
+﻿@model Country
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+@if (Model != null)
+{
+    @if (Model.Towns == null || Model.Towns.Count <= 0)
+    {
+        <form asp-action="Delete" method="post" asp-route-id="@Model.Id" asp-route-name="">
+            <input value="@Model.Name" />
+            <a asp-action="Index" class="btn btn-info">Cancel</a>
+            <button class="btn btn-danger">Delete country</button>
+        </form>
+    }
+    else
+    {
+        <h2>The following Towns belongs to the Country, so it can't be removed.</h2>
+        @foreach (City city in Model.Towns)
+        {
+            <li>@city.CityName</li>
+        }
+        <a asp-action="Index" class="btn btn-info">Back to Countries</a>
+    }
+}
+else
+{
+    <p>Can't find Country</p>
+    <a asp-action="Index" class="btn btn-info">Back to Countries</a>
+
+}

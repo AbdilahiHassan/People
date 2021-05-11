@@ -1,0 +1,17 @@
+﻿@model EditCountryViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" method="post">
+    <input asp-for="@Model.Id" />
+
+    <label asp-for="@Model.Createveiwmodelforcntr.Name"></label>
+    <input asp-for="@Model.Createveiwmodelforcntr.Name" />
+    <span asp-validation-for="@Model.Createveiwmodelforcntr.Name"></span>
+
+    <button class="btn btn-info">Update</button>
+
+</form>

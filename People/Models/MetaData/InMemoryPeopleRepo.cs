@@ -22,7 +22,8 @@ namespace People.Models.MetaData
                 FirstName = createPerson.FirstName,
                 LastName = createPerson.LastName,
                 City = createPerson.City,
-                PhoneNumber = createPerson.PhoneNumber
+                PhoneNumber = createPerson.PhoneNumber,
+                 //  ACityId = createPerson.CityId
 
             };
             PersonList.Add(newperson);

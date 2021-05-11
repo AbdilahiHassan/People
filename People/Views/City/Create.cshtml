@@ -1,0 +1,36 @@
+﻿@model People.Models.ViewModel.CreateCityViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+@if (Model != null && Model.Countries != null)
+{
+    <form asp-action="Create" method="post">
+        <label asp-for="@Model.cityName"></label>
+        <input asp-for="@Model.cityName" />
+        <span asp-validation-for="@Model.cityName"></span>
+
+        <label asp-for="NationsId "></label>
+        <select asp-for="NationsId">
+            @foreach (var item in Model.Countries)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <span asp-validation-for="NationsId"></span>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+}
+else
+{
+    <p>Create country or city!</p>
+    <a asp-action="Index" asp-controller="Country" class="btn btn-info">Country overview</a>
+    <a asp-action="Create" asp-controller="Country" class="btn btn-info">Create Country</a>
+}
+<div>
+    <a asp-action="Index" class="btn btn-info">Go back to List</a>
+</div>

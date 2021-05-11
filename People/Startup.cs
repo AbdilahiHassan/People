@@ -29,14 +29,19 @@ namespace People
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //DbContext to ConfigureServices
+            //Connection to database
             services.AddDbContext<PeopleDbContext>(options =>
          options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //connect to the DatabseRepo
+            //Services IOC/inversion of contorl
             services.AddScoped<IPeopelService, PeopleService>();
             // services.AddSingleton<IPeopleRepo, InMemoryPeopleRepo>();
-            services.AddScoped<IPeopleRepo, DataBasePeopleRepo>();
+            //Repo Inversion of control
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<ICountryService, CountryService>();
             //services.AddControllersWithViews();
+            services.AddScoped<ICityRepo, DataBaseCityRepo>();
+            services.AddScoped<ICountryRepo, DataBaseCountryRepo>();
+           services.AddScoped<IPeopleRepo, DataBasePeopleRepo>();
             services.AddMvc();
         }
 

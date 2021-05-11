@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using People.DataBase;
+using Microsoft.EntityFrameworkCore;
 
 namespace People.Models.Repo
 {
@@ -25,7 +26,8 @@ namespace People.Models.Repo
                 FirstName = createPerson.FirstName,
                 LastName = createPerson.LastName,
                 City = createPerson.City,
-                PhoneNumber = createPerson.PhoneNumber
+                PhoneNumber = createPerson.PhoneNumber,
+               //ACityId = createPerson.CityId
 
             };
             _peopleDbContext.persons.Add(newperson);
@@ -67,11 +69,14 @@ namespace People.Models.Repo
 
         public List<Person> Read()
         {
+            
             return _peopleDbContext.persons.ToList();
         }
 
         public Person Read(int id)
         {
+            //return _peopleDbContext.persons.Include(city => city.CityId).SingleOrDefault(row => row.Id == id);
+
             return _peopleDbContext.persons.SingleOrDefault(persontable => persontable.Id == id);//go to db,personTable/single/orDf/not found null
         }
 
@@ -85,8 +90,6 @@ namespace People.Models.Repo
             }
 
            _peopleDbContext.Update(person);
-
-     
 
             int result = _peopleDbContext.SaveChanges();
 

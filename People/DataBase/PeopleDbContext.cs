@@ -14,8 +14,15 @@ namespace People.DataBase
         }
 
      public   DbSet<Person> persons { get; set; }
-        public object People { get; internal set; }
+        public DbSet<City> Towns { get; set; }
+        public DbSet<Country> Countries { get; set; }
+      
     }
 
-
+    /* Rebuild
+     * Package manage console
+     *dotnet ef migrations add (addedsales.change your databaseName)
+      *dotnet ef database
+      *
+     */
 }

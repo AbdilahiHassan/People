@@ -1,0 +1,37 @@
+﻿@model CityDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div class="row">
+    <h2>@Model.CityName</h2>
+</div>
+<div class="row">
+    <p>City Id @Model.Id</p>
+</div>
+@if (Model.NationName != null)
+{
+    <div class="row">
+        <p>Country @Model.NationName</p>
+    </div>
+}
+else
+{
+    <div class="row">
+        <p>Country is not registered.</p>
+    </div>
+}
+@if (Model.townresident != null && Model.townresident.Count != 0)
+{
+    <div class="row">
+        <h3>townresident</h3>
+    </div>
+    <partial name="_PersonRorPartialView" model="Model.townresident" view-data="ViewData" />
+    
+}
+else
+{
+    <div class="row">No  boby live in this city.</div>
+}
+<a asp-action="Index" class="btn btn-info">Back to Townresident</a>

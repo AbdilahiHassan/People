@@ -1,0 +1,43 @@
+﻿@model People.Models.ViewModel.CityViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a asp-action="Create">Create City</a>
+
+<h1>Index</h1>
+
+@if (Model != null && Model.Towns != null)
+{
+    <h2>List of Cities</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>City Name</th>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Towns)
+            {
+                <tr>
+                    <td>@item.CityName</td>
+                    <td>@item.CountryNationsName.Name</td>
+                    <td>
+
+                        <a asp-action="Edit" asp-controller="City" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
+                        <a asp-action="Details" asp-controller="City" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+
+                        <a asp-action="Delete" asp-controller="City" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <p>It is too defficult to create a  city .</p>
+}

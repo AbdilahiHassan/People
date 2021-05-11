@@ -1,0 +1,26 @@
+﻿@model EditCityViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" method="post">
+    <input asp-for="@Model.Id"  />
+
+    <label asp-for="@Model.Createveiwmodel.cityName"></label>
+    <input asp-for="@Model.Createveiwmodel.cityName" />
+    <span asp-validation-for="@Model.Createveiwmodel.cityName"></span>
+
+    <label asp-for="@Model.Createveiwmodel.NationsId"></label>
+    <select asp-for="@Model.Createveiwmodel.NationsId">
+        @foreach (var item in Model.Createveiwmodel.Countries)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+    <span asp-validation-for="@Model.Createveiwmodel.NationsId"></span>
+
+    <button class="btn btn-info">Update</button>
+
+</form>

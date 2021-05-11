@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace People.Models.PersonData
 {
-    
+
     public class Person
     {
         [Key]
@@ -23,6 +24,8 @@ namespace People.Models.PersonData
         [Required]
         [MaxLength(70)]
         public string City { get; set; }
+        public List<City> CityId { get; set; }
+ 
 
     }
 }
