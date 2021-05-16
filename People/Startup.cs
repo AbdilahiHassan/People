@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace People
 {
     public class Startup
@@ -33,15 +34,20 @@ namespace People
             services.AddDbContext<PeopleDbContext>(options =>
          options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //Services IOC/inversion of contorl
-            services.AddScoped<IPeopelService, PeopleService>();
-            // services.AddSingleton<IPeopleRepo, InMemoryPeopleRepo>();
-            //Repo Inversion of control
+            services.AddScoped<IPeopelService, PeopleService>();           
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<ILanguageService, LanguageService>();
+            services.AddScoped<IPersonLanguageService, PersonLanguageService>();
+            // services.AddSingleton<IPeopleRepo, InMemoryPeopleRepo>();
+            //Repo Inversion of control
+
             //services.AddControllersWithViews();
             services.AddScoped<ICityRepo, DataBaseCityRepo>();
             services.AddScoped<ICountryRepo, DataBaseCountryRepo>();
            services.AddScoped<IPeopleRepo, DataBasePeopleRepo>();
+            services.AddScoped<ILanguageRepo, DBLanguageRepo>();
+            services.AddScoped<IPersonLanguageRepo, DBPersonLanguageRepo>();
             services.AddMvc();
         }
 

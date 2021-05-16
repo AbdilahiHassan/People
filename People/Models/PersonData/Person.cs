@@ -25,7 +25,8 @@ namespace People.Models.PersonData
         [MaxLength(70)]
         public string City { get; set; }
         public List<City> CityId { get; set; }
- 
+        public List<PersonLanguage> PersonLanguages { get; set; }
+
 
     }
 }

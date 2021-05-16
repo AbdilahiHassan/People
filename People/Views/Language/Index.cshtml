@@ -1,0 +1,45 @@
+﻿@model List<Language>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Language Index</h1>
+
+<a asp-action="Create">Create Language</a>
+
+@if (Model != null && Model.Count > 0)
+
+
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Language</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.Name</td>
+                    <td>
+ 
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+<p>No Language has Created yet</p>
+
+}
+
+
+        

@@ -1,0 +1,15 @@
+﻿@model CreateLanguageViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Languages</h1>
+<form asp-action="Create" method="post">
+    
+    <label asp-for="@Model.Name"></label>
+    <input asp-for="@Model.Name" />
+    
+    <span asp-validation-for="@Model.Name"></span>
+
+    <button class="btn btn-primary">Create Language</button>    
+    </form>

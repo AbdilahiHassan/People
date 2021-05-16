@@ -82,6 +82,7 @@ namespace People.Controllers
             {
                 return RedirectToAction("Index");
             }
+            EditCityViewModel cityViewModel = new EditCityViewModel();
 
             return View(city);
         }

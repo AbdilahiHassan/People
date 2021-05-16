@@ -42,6 +42,8 @@ namespace People.Controllers
             }
             EditCountryViewModel editCountry = new EditCountryViewModel(id, Editcountry);
             editCountry.Createveiwmodelforcntr.CityList = _cityService.FindTownresident(id);
+
+          
             return View(editCountry);
            
         }
@@ -76,10 +78,14 @@ namespace People.Controllers
             Country editCountry = _countryService.FindBy(id);
             if (editCountry == null)
             {
+                
+
                 return RedirectToAction(nameof(Index));
             }
 
             EditCountryViewModel editCountryViewModel = new EditCountryViewModel(id, editCountry);
+           
+
 
             return View(editCountryViewModel);
         }
