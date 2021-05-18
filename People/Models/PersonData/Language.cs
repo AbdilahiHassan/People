@@ -8,7 +8,7 @@ namespace People.Models.PersonData
 {
     public class Language
     {
-        [key]
+     //jag har tagit bort [key]
         public int Id { get; set; }
         [Required]
         [MaxLength(150)]
