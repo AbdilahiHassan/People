@@ -13,16 +13,28 @@ namespace People.Controllers
     public class IPeopleController : Controller
     {
         IPeopelService _peopleService;
-        public IPeopleController(IPeopelService peopleservice) //constructur for Dependency injection
+        ICityService _cityService;
+
+        private readonly ILanguageService _languageService;
+        private readonly IPersonLanguageService _personLanguageService;
+        public IPeopleController(IPeopelService peopleservice,
+            ICityService cityService,
+            ILanguageService languageService,
+            IPersonLanguageService personLanguageServic) //constructur for Dependency injection
         {
             _peopleService = peopleservice;
+            _cityService = cityService;
+            _languageService = languageService;
+            _personLanguageService = personLanguageServic;
+
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+
             return View(_peopleService.All());
-          
+
         }
 
 
@@ -66,25 +78,59 @@ namespace People.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-            else 
+            else
             {
                 return RedirectToAction(nameof(Index));
             }
         }
-             [HttpGet]
-            public IActionResult Update(int id)
-                  {
-            Person updPerson = _peopleService.FindById(id);
-                if (updPerson != null)
-                {
-                    updPerson.LastName = updPerson.LastName + " Updated";
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Person person = _peopleService.FindById(id);
 
-                    updPerson = _peopleService.Edit(id, updPerson);
-                }
+            if (person == null)
+            {
                 return RedirectToAction(nameof(Index));
             }
-        }
-    }
 
+            EditPersonViewModel editPerson = new EditPersonViewModel(id, person);
+
+            editPerson.ListofCity = _cityService.All().Towns; 
+
+
+            return View(editPerson);
+
+        }
+
+        [HttpPost]
+
+        public IActionResult Edit(int id, CreatePerson createPerson)
+        {
+
+            Person personn = _peopleService.FindById(id);
+            if (personn == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            if (ModelState.IsValid)
+            {
+           // _peopleService.Edit(id, createPerson);
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            EditPersonViewModel editPerson = new EditPersonViewModel(id, personedit: createPerson);
+            editPerson.ListofCity = _cityService.All().Towns;
+
+            return View(editPerson);
+
+        
+        }
+
+        }
+        }
     
+
+
 

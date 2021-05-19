@@ -25,10 +25,10 @@ namespace People.Models.Repo
 
                 FirstName = createPerson.FirstName,
                 LastName = createPerson.LastName,
-                City = createPerson.City,
+                InCityId = createPerson.CityId,
+                //  City = createPerson.City,
                 PhoneNumber = createPerson.PhoneNumber,
-               //ACityId = createPerson.CityId
-
+         
             };
             _peopleDbContext.persons.Add(newperson);
 
@@ -68,9 +68,11 @@ namespace People.Models.Repo
     } 
 
         public List<Person> Read()
+
         {
-            
-            return _peopleDbContext.persons.ToList();
+         return _peopleDbContext.persons.Include("InCity").ToList();
+
+           
         }
 
         public Person Read(int id)

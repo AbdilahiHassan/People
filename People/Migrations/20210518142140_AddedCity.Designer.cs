@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using People.DataBase;
 
 namespace People.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    partial class PeopleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210518142140_AddedCity")]
+    partial class AddedCity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,6 +90,8 @@ namespace People.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("InCityId")
+                        .IsRequired()
+                        .HasMaxLength(70)
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
@@ -137,7 +141,9 @@ namespace People.Migrations
                 {
                     b.HasOne("People.Models.PersonData.City", "InCity")
                         .WithMany("townresident")
-                        .HasForeignKey("InCityId");
+                        .HasForeignKey("InCityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("InCity");
                 });

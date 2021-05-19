@@ -8,7 +8,7 @@ namespace People.Models.PersonData
 {
     public class City
     {
-        [Key]
+    
        public int Id { get; set; }
         [Required]
         [MaxLength(100)]

@@ -17,9 +17,9 @@ namespace People.Models.Service
 
         public Person FindById(int id);
 
-        public Person Edit(int id, Person person);
+        public Person Edit(int id, EditPersonViewModel createPerson);
 
         public bool Remove(int id);
-      
+       
     }
 }

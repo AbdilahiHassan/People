@@ -1,25 +1,25 @@
-﻿@model CreatePerson
+﻿@model EditPersonViewModel
 @{
     ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
     <form asp-action="Create" asp-controller="IPeople" method="post">
-        <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" />
-        <span asp-validation-for="FirstName"></span>
+        <label asp-for="CreatePerson.FirstName"></label>
+        <input asp-for="CreatePerson.FirstName" />
+        <span asp-validation-for="CreatePerson.FirstName"></span>
 
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName" />
-        <span asp-validation-for="LastName"></span>
+        <label asp-for="CreatePerson.LastName"></label>
+        <input asp-for="CreatePerson.LastName" />
+        <span asp-validation-for="CreatePerson.LastName"></span>
 
-        <label asp-for="City"></label>
-        <input asp-for="City" />
-        <span asp-validation-for="City"></span>
+        <label asp-for="CreatePerson.CityId"></label>
+        <input asp-for="CreatePerson.CityId" />
+        <span asp-validation-for="CreatePerson.CityId"></span>
 
-        <label asp-for="PhoneNumber"></label>
-        <input asp-for="PhoneNumber" />
-        <span asp-validation-for="PhoneNumber"></span>
+        <label asp-for="CreatePerson.PhoneNumber"></label>
+        <input asp-for="CreatePerson.PhoneNumber" />
+        <span asp-validation-for="CreatePerson.PhoneNumber"></span>
 
         <button type="reset">Reset</button>
         <button>Create</button>

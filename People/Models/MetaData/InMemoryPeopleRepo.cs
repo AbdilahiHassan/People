@@ -21,8 +21,8 @@ namespace People.Models.MetaData
                 Id = ++IdCounter,
                 FirstName = createPerson.FirstName,
                 LastName = createPerson.LastName,
-                City = createPerson.City,
-                PhoneNumber = createPerson.PhoneNumber,
+                InCityId = createPerson.CityId,
+                PhoneNumber = createPerson.PhoneNumber
                  //  ACityId = createPerson.CityId
 
             };
@@ -74,7 +74,7 @@ namespace People.Models.MetaData
             }
             orignalPerson.FirstName = person.FirstName;
             orignalPerson.LastName = person.LastName;
-            orignalPerson.City = person.City;
+            orignalPerson.InCityId = person.InCityId;
             orignalPerson.PhoneNumber = person.PhoneNumber;
             return orignalPerson;
         }

@@ -21,10 +21,15 @@ namespace People.Models.PersonData
         [Required]
         [MaxLength(40)]
         public string PhoneNumber { get; set; }
-        [Required]
-        [MaxLength(70)]
-        public string City { get; set; }
-        public List<City> CityId { get; set; }
+        //[Required]
+        //[MaxLength(70)]
+
+        [ForeignKey("InCity")]
+        public int? InCityId { get; set; }   
+        public City InCity { get; set; }
+       // public string City { get; set; }
+    
+        // public List<City> CityId { get; set; }
         public List<PersonLanguage> PersonLanguages { get; set; }
 
 
