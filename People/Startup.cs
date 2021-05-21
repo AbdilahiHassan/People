@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using People.DataBase;
+using People.Models;
 using People.Models.MetaData;
 using People.Models.Repo;
 using People.Models.Service;
@@ -33,6 +35,13 @@ namespace People
             //Connection to database
             services.AddDbContext<PeopleDbContext>(options =>
          options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //---------------Indentity----
+            services.AddIdentity<UserApplication, IdentityRole>()
+                 .AddEntityFrameworkStores<PeopleDbContext>()
+                 .AddDefaultTokenProviders();
+
+
+
             //Services IOC/inversion of contorl
             services.AddScoped<IPeopelService, PeopleService>();           
             services.AddScoped<ICityService, CityService>();
@@ -43,6 +52,7 @@ namespace People
             //Repo Inversion of control
 
             //services.AddControllersWithViews();
+            //------------- Repo IOC-------------
             services.AddScoped<ICityRepo, DataBaseCityRepo>();
             services.AddScoped<ICountryRepo, DataBaseCountryRepo>();
            services.AddScoped<IPeopleRepo, DataBasePeopleRepo>();
@@ -69,7 +79,8 @@ namespace People
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();//Add this= Are you login?
+            app.UseAuthorization();//  Add this too= Did you have the Rigth to do it?
 
             app.UseEndpoints(endpoints =>
             {

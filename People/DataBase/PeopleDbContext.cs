@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using People.Models;
 using People.Models.PersonData;
 using System;
 using System.Collections.Generic;
@@ -7,7 +10,9 @@ using System.Threading.Tasks;
 
 namespace People.DataBase
 {
-    public class PeopleDbContext: DbContext
+    public class PeopleDbContext: IdentityDbContext<UserApplication>
+
+
     {
         public PeopleDbContext(DbContextOptions<PeopleDbContext> options) : base(options)
         {
@@ -16,6 +21,7 @@ namespace People.DataBase
         //Join table configured using Fluent API
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); //Recommend on the first line inside method.
             modelBuilder.Entity<PersonLanguage>().HasKey(PL =>
             new
             {
