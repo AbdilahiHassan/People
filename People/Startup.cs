@@ -39,8 +39,10 @@ namespace People
             services.AddIdentity<UserApplication, IdentityRole>()
                  .AddEntityFrameworkStores<PeopleDbContext>()
                  .AddDefaultTokenProviders();
-
-
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            });
 
             //Services IOC/inversion of contorl
             services.AddScoped<IPeopelService, PeopleService>();           

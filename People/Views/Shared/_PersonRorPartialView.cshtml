@@ -16,7 +16,8 @@
     </div>
     <!--City-->
     <div class="col-2">
-        <p>@Model.InCity</p>
+        <p>@(Model.InCity != null ? Model.InCity.CityName : "No City")</p>
+
     </div>
     <!--PhoneNumber-->
     <div class="col-2">
@@ -27,7 +28,7 @@
     <div class="col-2">
 
         <a asp-action="Delete" asp-controller="IPeople" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
-        <a asp-action="Update" asp-controller="IPeople" asp-route-id="@Model.Id" class="btn btn-info">Edit</a>
+        <a asp-action="Edit" asp-controller="IPeople" asp-route-id="@Model.Id" class="btn btn-info">Edit</a>
         
     </div>
 </div> 

@@ -28,6 +28,13 @@ namespace People.Controllers
         {
             return View();
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(UserRegisterViewModel userRegister)
@@ -53,7 +60,7 @@ namespace People.Controllers
                 }
                 foreach (var item in result.Errors)
                 {
-                    ModelState.AddModelError(item.Code, item.Code);
+                    ModelState.AddModelError(item.Code, item.Description);
                 }
             }
             return View(userRegister);
@@ -64,6 +71,7 @@ namespace People.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel loginUser)

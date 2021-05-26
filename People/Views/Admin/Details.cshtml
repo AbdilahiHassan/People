@@ -1,0 +1,37 @@
+﻿@model UserApplication
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<dl>
+
+    <dt>UserName</dt>
+    <dd>@Model.UserName</dd>
+
+    <dt>FirstName</dt>
+    <dd>@Model.FirstName</dd>
+
+    <dt>LastName</dt>
+    <dd>@Model.LastName</dd>
+
+    <dt>Email</dt>
+    <dd>@Model.Email</dd>
+
+    <dt>BirthDay</dt>
+    <dd>@Model.BirthDate</dd>
+    <dt>PhoneNumber</dt>
+    <dd>@Model.PhoneNumber</dd>
+
+    <dt>LockoutEnabled</dt>
+    <dd>@Model.LockoutEnabled</dd>
+    <dt>Actions</dt>
+    
+     
+    <dd>
+        @Html.ActionLink("Roles Managment", "RolesManagment", "Admin", new { id = Model.Id })
+    </dd>
+   
+
+</dl>

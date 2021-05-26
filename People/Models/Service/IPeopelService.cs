@@ -20,6 +20,6 @@ namespace People.Models.Service
         public Person Edit(int id, EditPersonViewModel createPerson);
 
         public bool Remove(int id);
-       
+      //  Person FindBy(int id);
     }
 }

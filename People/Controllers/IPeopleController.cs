@@ -88,48 +88,68 @@ namespace People.Controllers
         {
             Person person = _peopleService.FindById(id);
 
-            if (person == null)
+            if (person != null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
             EditPersonViewModel editPerson = new EditPersonViewModel(id, person);
 
-            editPerson.ListofCity = _cityService.All().Towns; 
+            editPerson.Id = id;
+            editPerson.CreatePerson.ListofCity = _cityService.All().Towns;
 
 
             return View(editPerson);
 
         }
 
+
         [HttpPost]
 
-        public IActionResult Edit(int id, CreatePerson createPerson)
+        public IActionResult Edit(int id, EditPersonViewModel personvmodel)
         {
+              Person editPerson = _peopleService.FindById(personvmodel.Id); //I'm not sure it working or not
 
-            Person personn = _peopleService.FindById(id);
-            if (personn == null)
+            if (editPerson == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
             if (ModelState.IsValid)
             {
-           // _peopleService.Edit(id, createPerson);
-
+             _peopleService.Edit(personvmodel.Id, personvmodel);
 
                 return RedirectToAction(nameof(Index));
             }
-            EditPersonViewModel editPerson = new EditPersonViewModel(id, personedit: createPerson);
-            editPerson.ListofCity = _cityService.All().Towns;
 
-            return View(editPerson);
 
+            return View(personvmodel);
+        }
+    
+
+        // Person personn = _peopleService.FindById(id);
+        // if (personn == null)
+        // {
+        //     return RedirectToAction(nameof(Index));
+        // }
+
+        // if (ModelState.IsValid)
+        // {
+        //// _peopleService.Edit(id, createPerson);
+
+
+        //     return RedirectToAction(nameof(Index));
+        // }
+        // EditPersonViewModel editPerson = new EditPersonViewModel(id, personedit: createPerson);
+        // editPerson.ListofCity = _cityService.All().Towns;
+
+        // return View(editPerson);
+
+
+    }
+
+        }
         
-        }
-
-        }
-        }
     
 
 

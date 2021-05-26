@@ -37,7 +37,7 @@ namespace People.Controllers
         {
             
             Person person = _peopleService.FindById(id);
-            if(person != null)
+            if(person == null)
             {
                 return NotFound();
             }

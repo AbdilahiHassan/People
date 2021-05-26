@@ -44,7 +44,7 @@ function AjaxShowPersonDetails(event) {
         function (data, status) {
             console.log("Data: " + data + "\nStatus: " + status);
 
-            $("#person").html(data);
+            resultDiv.innerHTML = data;
         }
     );
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using People.Models.PersonData;
 using People.Models.Service;
@@ -10,9 +11,11 @@ using System.Threading.Tasks;
 
 namespace People.Controllers
 {
+    [Authorize(Roles = "Admin, city")]
 
     public class CityController : Controller
     {
+
         private readonly ICityService _cityService;
         private readonly ICountryService _countryService;
         private readonly IPeopelService _peopleService;

@@ -1,0 +1,25 @@
+﻿@model EditPersonViewModel
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<h1>Edit Person Details</h1>
+
+ <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+
+    <input asp-for="CreatePerson.ListofCity" placeholder="Name" />
+    <input asp-for="CreatePerson.PhoneNumber" placeholder="Phone" />
+    <select asp-for="CreatePerson.CityId" placeholder="City">
+        <option value="0">No City</option>
+
+        @foreach (var item in Model.ListofCity)
+        {
+            <option value="@item.Id">@item.CityName</option>
+        }
+
+    </select>
+
+    <button>Save</button>
+
+</form>
