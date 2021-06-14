@@ -12,6 +12,11 @@ namespace People.Models.PersonData
     {
         [Key]
         public int Id { get; set; }
+
+        //[Required]
+        //[MaxLength(60)]
+        //public string Name { get; set; } //added
+
         [Required]
         [MaxLength(100)]
         public string FirstName { get; set; }

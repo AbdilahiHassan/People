@@ -23,7 +23,9 @@ namespace People
     {
         //Access to appsettings.json in my Startup class file (Constructor Injection).
         public IConfiguration Configuration { get; }
-  
+       
+       // readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -60,8 +62,27 @@ namespace People
            services.AddScoped<IPeopleRepo, DataBasePeopleRepo>();
             services.AddScoped<ILanguageRepo, DBLanguageRepo>();
             services.AddScoped<IPersonLanguageRepo, DBPersonLanguageRepo>();
+
+            //.......Cors...
+            services.AddCors(options =>
+            {
+               options.AddPolicy("ReactPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000") 
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                    });
+            });
+            //.................Swagger..
+            services.AddSwaggerGen();
+
             services.AddMvc();
         }
+       
+             
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -79,8 +100,18 @@ namespace People
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
 
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "People API V1");
+            });
+
+            app.UseRouting();
+            app.UseCors();
             app.UseAuthentication();//Add this= Are you login?
             app.UseAuthorization();//  Add this too= Did you have the Rigth to do it?
 

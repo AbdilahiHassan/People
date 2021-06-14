@@ -28,6 +28,12 @@ namespace People.Models.ViewModel
                 PhoneNumber = person.PhoneNumber,
             };
         }
+
+
+        public EditPersonViewModel()
+        {
+
+        }
             public EditPersonViewModel (int id, EditPersonViewModel personedit)
             {
 

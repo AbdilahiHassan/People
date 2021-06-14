@@ -10,6 +10,7 @@ namespace People.Models.ViewModel
   
     public class CreatePerson
     {
+        public string Name { get; set; }//added
         [Display(Name = "City")]
         public int? CityId { get; set; }
         //public string InCityId { get;  set; }

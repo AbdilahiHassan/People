@@ -88,7 +88,7 @@ namespace People.Controllers
         {
             Person person = _peopleService.FindById(id);
 
-            if (person != null)
+            if (person == null)
             {
                 return RedirectToAction(nameof(Index));
             }
@@ -96,12 +96,14 @@ namespace People.Controllers
             EditPersonViewModel editPerson = new EditPersonViewModel(id, person);
 
             editPerson.Id = id;
-            editPerson.CreatePerson.ListofCity = _cityService.All().Towns;
+            editPerson.ListofCity = _cityService.All().Towns;
 
 
             return View(editPerson);
 
         }
+    
+
 
 
         [HttpPost]
